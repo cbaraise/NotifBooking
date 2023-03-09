@@ -147,3 +147,12 @@ textarea{
 .star.active {
   color: #ffbf00;
 }
+
+.bordered-div {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: black;
+}
+
+

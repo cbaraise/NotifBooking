@@ -6,12 +6,14 @@ $name =um_get_display_name( $user_id );
 global $wpdb;
 
 $table_name = $wpdb->prefix . "notifandfeedback";
-//if(isset($_POST['note-value'])) {
-    $note = $_POST['note-value'];
+    if(isset($_POST['note-value']) && isset($_POST['commentaire'])) {
+        $note = $_POST['note-value'];
+        $commentaire = $_POST['commentaire'];
+    }
+    else{
+        throw new Exception( 'Erreur : données non valide ou null ');
+    }
 
-
-$commentaire = $_POST['commentaire'];
-var_dump($note);
 $data = array(
    'nom_utilisateur' => $name,
    'note' => $note,
@@ -23,6 +25,10 @@ $wpdb->insert($table_name, $data);
 if ($wpdb->insert_id === false) {
     echo "Erreur lors de l'insertion des données dans la table.";
 } else {
-    echo "Message enregistrer avec succès.";
+    echo ("<div class='bordered-div'>
+    <p sytle='text-align:center;'>Message enregistrée avec succès.</p>
+   </div> <meta http-equiv='refresh' content='0;url=http://localhost:9000'>");
+
+   
     
 }

@@ -20,7 +20,7 @@ require plugin_dir_path(file: __FILE__).'vendor/autoload.php';
 
 if(is_user_logged_in()){ //si l'utilisateur est connecté alors il peut voir et interragir avec la cloche 
   add_action('generate_menu_bar_items', 'icon_bell');
-  add_action('wp_loaded','feedback');
+  add_action('generate_menu_bar_items','feedback');
 }
 
 
