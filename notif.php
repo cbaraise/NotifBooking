@@ -20,8 +20,17 @@ require plugin_dir_path(file: __FILE__).'vendor/autoload.php';
 
 if(is_user_logged_in()){ //si l'utilisateur est connecté alors il peut voir et interragir avec la cloche 
   add_action('generate_menu_bar_items', 'icon_bell');
-  add_action('generate_after_header','feedback');
-}
+  $user_data = get_userdata(get_current_user_id());
+  $name = $user_data->user_login;
+  global $wpdb; // Utiliser la global $wpdb pour exécuter des requêtes SQL
+  $results = $wpdb->get_results( "SELECT * FROM wp_notifandfeedback WHERE nom_utilisateur='$name'");
+
+
+      if(!$results){
+        add_action('generate_after_header','feedback');
+    }
+  }
+  
 
 
 

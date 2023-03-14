@@ -28,7 +28,7 @@ include_once(ABSPATH . 'wp-content\plugins\ultimate-member\includes\um-short-fun
 
           <div class="test">
             <h3 class="test-2">Donnez-nous votre avis</h3>
-            <form action='wp-content\plugins\NotifBooking\controller\feedbackController.php'  method="POST" >
+            <form   method="POST" >
             <div class="rating" >
     <span class="star" data-value="1" onclick="setNoteValue(1)">&#9733;</span>
     <span class="star" data-value="2" onclick="setNoteValue(2)">&#9733;</span>
@@ -47,7 +47,7 @@ include_once(ABSPATH . 'wp-content\plugins\ultimate-member\includes\um-short-fun
       </div>
 
       <div class="modal-div-8">
-        <button class="submit-button" id="send-avis-btn" type="submit">Envoyer</button>
+        <button class="submit-button" name="avisBtn" id="send-avis-btn" type="submit">Envoyer</button>
        
 
         </form>
@@ -110,6 +110,48 @@ function setNoteValue(note) {
 
 
 </script>
+
+
+
+<?php
+if (isset($_POST['avisBtn'])){
+
+
+$user_id=get_current_user_id(); 
+$user_data = get_userdata( $user_id );
+$name = $user_data->user_login;
+global $wpdb;
+
+$table_name = $wpdb->prefix . "notifandfeedback";
+    if(isset($_POST['note-value']) && isset($_POST['commentaire'])) {
+        $note = $_POST['note-value'];
+        $commentaire = $_POST['commentaire'];
+    }
+    else{
+        throw new Exception( 'Erreur : données non valide ou null ');
+    }
+
+$data = array(
+   'nom_utilisateur' => $name,
+   'note' => $note,
+   'commentaire' => $commentaire
+);
+
+$wpdb->insert($table_name, $data);
+
+if ($wpdb->insert_id === false) {
+    echo "Erreur lors de l'insertion des données dans la table.";
+} else {
+   echo ("<meta http-equiv='refresh' content='0;url=http://localhost:9000'>");
+   echo '<script>alert("Votre avis à bien été enregistré")</script>';
+
+   
+    
+}
+}
+?>
+
+
 
 
 

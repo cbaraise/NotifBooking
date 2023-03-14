@@ -34,3 +34,16 @@
 .commentaire {
     margin: 0;
 }
+
+
+.delete_avis {
+    color: red;
+    text-decoration: underline;
+    margin-right: 2px;
+    background-color: white;
+    visibility: hidden; /* pour masquer le bouton par défaut *//* pour centrer le bouton verticalement */
+}
+
+.avis-client:hover .delete_avis {
+    visibility: visible; /* pour afficher le bouton lorsque le curseur passe sur le commentaire */
+}
