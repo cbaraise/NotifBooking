@@ -1,0 +1,36 @@
+.avis-clients-container {
+    width: 800px;
+    height: 450px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+	display: flex;
+}
+
+.avis-clients {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.avis-client {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.nom-utilisateur {
+    font-weight: bold;
+    margin: 0;
+}
+
+.note {
+    font-size: 24px;
+    margin: 10px 0;
+	color: #FFC300;;
+}
+
+.commentaire {
+    margin: 0;
+}
