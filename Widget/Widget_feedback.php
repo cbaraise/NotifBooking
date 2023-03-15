@@ -18,7 +18,7 @@ public function widget( $args, $instance ) {
     $user_data = get_userdata( $user_id );
     $name = $user_data->user_login;
     echo $args['before_widget'];
-    echo $args['before_title'] .'<h1> Avis client </h1>' . $args['after_title'];
+    echo $args['before_title'] .'<h1> Avis de nos clients </h1>' . $args['after_title'];
 
     // Récupérer les éléments de la table en base de données
     global $wpdb; // Utiliser la global $wpdb pour exécuter des requêtes SQL
@@ -50,8 +50,13 @@ public function widget( $args, $instance ) {
                     if (isset($id)) {
                         $results = $wpdb->get_results( "DELETE FROM wp_notifandfeedback WHERE id_feedback = $id");
                         // Ajoutez ici un message de confirmation ou une redirection vers la page d'accueil, par exemple.
-                        echo '<script>location.reload();
-                        alert("Votre avis à bien été supprimer")</script>';
+                        $_SESSION['notification'] = array(
+                            'type' => 'AvisValid',
+                            'message' => "Votre avis à bien été Supprimée !",
+                            'notifications'=> "1"
+                        );
+                        
+                          header('Refresh:0');
                       } 
             }
             

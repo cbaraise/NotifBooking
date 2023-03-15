@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 include_once(ABSPATH . 'wp-content\plugins\NotifBooking\notif.php');
 include_once(ABSPATH . 'wp-content\plugins\ultimate-member\includes\um-short-functions.php');
+include_once(ABSPATH.'wp-content\plugins\NotifBooking\view\bell.php');
+
 
 ?>
 
@@ -142,12 +144,17 @@ $wpdb->insert($table_name, $data);
 if ($wpdb->insert_id === false) {
     echo "Erreur lors de l'insertion des données dans la table.";
 } else {
-   echo ("<meta http-equiv='refresh' content='0;url=http://localhost:9000'>");
-   echo '<script>alert("Votre avis à bien été enregistré")</script>';
+  
+  $_SESSION['notification'] = array(
+    'type' => 'AvisValid',
+    'message' => "Votre avis à bien été envoyé !",
+    'notifications'=> "1"
+);
 
-   
-    
-}
+  header('Refresh:0');
+  
+  }
+
 }
 ?>
 

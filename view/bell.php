@@ -5,22 +5,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 include_once( ABSPATH . 'wp-includes\pluggable.php' );
 include_once(ABSPATH . 'wp-content\plugins\NotifBooking\notif.php');
-$notif=false;
-function  AdminNotif(){
-  $notif=false;  
-  return $notif;
 
+// Démarre la session
+session_start();
+$notifications=0;
+$message="Vous n'avez pas de notification";
+// Enregistre une notification dans la variable $_SESSION
+
+if (isset($_SESSION['notification'])) {
+  // Affiche la notification dans $message
+  $message = '<div class="' . $_SESSION['notification']['type'] . '">' . $_SESSION['notification']['message'] .'</div>';
+  $notifications=$_SESSION['notification']['notifications'] ;
+  // Supprime la notification de la session pour ne pas l'afficher plusieurs fois
+  
+
+
+  
 }
-if(AdminNotif() ==false){
-  $notifications=0;
-  $message="aucune nouvelle notification";
-}
-else{
-  $notifications=1;
-  $message="Vouse avez de nouvelles demande de rendez-vous";
+if(isset($_POST['Vue'])){
+  unset($_SESSION['notification']);
 }
 
 ?>
+
 
 <div class='notification-dropdown'>
         <button class='notification-button'>
@@ -38,7 +45,9 @@ else{
         <ul class='notification-list'>
           <li><p class='defaultNotif'> <?= $message ?></p> </li>
           <li> 
-            <button class='notif-confirm' onclick="ResetNotif()">Marqué comme Vue </button> 
+            <form method="post">
+              <button class='notif-confirm' name="Vue" type='submit'>Marquer comme Vue </button> 
+            </form>
           </li>
         </ul>
       </div>
