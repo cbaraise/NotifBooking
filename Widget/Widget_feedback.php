@@ -14,9 +14,11 @@ function __construct() {
 }
 // Fonction pour afficher le contenu du widget
 public function widget( $args, $instance ) {
-    $user_id=get_current_user_id(); 
-    $user_data = get_userdata( $user_id );
-    $name = $user_data->user_login;
+    if ( is_user_logged_in() ) {
+        $user_id=get_current_user_id(); 
+        $user_data = get_userdata( $user_id );
+        $name = $user_data->user_login;
+        }
     echo $args['before_widget'];
     echo $args['before_title'] .'<h1> Avis de nos clients </h1>' . $args['after_title'];
 
