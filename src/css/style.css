@@ -204,7 +204,7 @@ top: 0;
 right: 0;
 bottom: 0;
 left: 0; 
-z-index: 10; 
+z-index: 25; 
 
  }
 
@@ -258,7 +258,7 @@ vertical-align: bottom;
 border-radius: 0.5rem; 
 box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
 position: relative; /* Ajoutez cette ligne pour que z-index fonctionne */
-z-index: 1; /* Placez le formulaire au-dessus de l'élément gris semi-transparent */
+z-index: 25; /* Placez le formulaire au-dessus de l'élément gris semi-transparent */
 width: 500px;
 
 
@@ -409,4 +409,10 @@ font-size: 0.875rem;
 line-height: 1.25rem; 
 width: auto; 
  }
+ }
+
+
+ .admin-menu{
+  background-color: white;
+  color:black;
  }
