@@ -51,8 +51,15 @@ if(isset($_POST['Vue'])){
           </li>
         </ul>
       </div>
-
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+      <div class='notification-dropdown'>
+        <a href="http://localhost:9000/wp-admin/">
+        <span class="material-symbols-outlined">
+          admin_panel_settings
+        </span>
+        </a>
+      </div>
+
         
    
 <script>

@@ -6,8 +6,12 @@
     border-radius: 5px;
     padding: 10px;
 	display: flex;
+    margin: 0 auto;
+    overflow-y: scroll;
 }
-
+.titre-widget{
+    text-align: center;
+}
 .avis-clients {
     width: 100%;
     margin: 0;
@@ -18,6 +22,7 @@
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;
+   
 }
 
 .nom-utilisateur {

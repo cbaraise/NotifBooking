@@ -20,7 +20,7 @@ public function widget( $args, $instance ) {
         $name = $user_data->user_login;
         }
     echo $args['before_widget'];
-    echo $args['before_title'] .'<h1> Avis de nos clients </h1>' . $args['after_title'];
+    echo $args['before_title'] ."<h1 class='titre-widget'>L'avis de nos clients </h1>" . $args['after_title'];
 
     // Récupérer les éléments de la table en base de données
     global $wpdb; // Utiliser la global $wpdb pour exécuter des requêtes SQL
@@ -38,6 +38,7 @@ public function widget( $args, $instance ) {
 			echo '<p class="nom-utilisateur">' . $result->nom_utilisateur. ' - ' . $result->date_avis  . '</p>';
 			echo '<p class="note">' . $etoiles . '</p>';
 			echo '<p class="commentaire">' . $result->commentaire . '</p>';
+            if ( is_user_logged_in() ) {
             if($name == $result->nom_utilisateur){
                 $id=$result->id_feedback;
                 
@@ -60,6 +61,7 @@ public function widget( $args, $instance ) {
                         
                           header('Refresh:0');
                       } 
+                    }
             }
             
               
@@ -69,7 +71,7 @@ public function widget( $args, $instance ) {
 			
 		}
     } else {
-        echo '<p>Aucun élément à afficher</p>';
+        echo '<p class="titre-widget">Aucun élément à afficher</p>';
     }
 
     echo $args['after_widget'];

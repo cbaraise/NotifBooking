@@ -173,7 +173,7 @@ line-height: 1.5rem;
 
 .btn-div{
   position: fixed; 
-right: 2.5rem; 
+left: 1.5rem; 
 bottom: 2.5rem; 
 }
 
@@ -415,4 +415,17 @@ width: auto;
  .admin-menu{
   background-color: white;
   color:black;
+ }
+
+
+ footer{
+  background-color: white;
+  
+ }
+ 
+
+ .cellcontent{
+  flex: 1;
+  text-align:center ;
+  border-right: 1px solid #D1D5DB;
  }
