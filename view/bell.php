@@ -7,18 +7,17 @@ include_once( ABSPATH . 'wp-includes\pluggable.php' );
 include_once(ABSPATH . 'wp-content\plugins\NotifBooking\notif.php');
 
 // Démarre la session
-session_start();
+
 $notifications=0;
 $message="Vous n'avez pas de notification";
 // Enregistre une notification dans la variable $_SESSION
-
+session_start();
 if (isset($_SESSION['notification'])) {
   // Affiche la notification dans $message
   $message = '<div class="' . $_SESSION['notification']['type'] . '">' . $_SESSION['notification']['message'] .'</div>';
   $notifications=$_SESSION['notification']['notifications'] ;
-  // Supprime la notification de la session pour ne pas l'afficher plusieurs fois
   
-
+  // Supprime la notification de la session pour ne pas l'afficher plusieurs fois
 
   
 }
@@ -50,15 +49,23 @@ if(isset($_POST['Vue'])){
             </form>
           </li>
         </ul>
+        </div>
+      <?php
+      if(current_user_can( 'edit_posts' )){
+        echo '
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <div class="notification-dropdown">
+          <a href="http://localhost:9000/wp-admin/">
+          <span class="material-symbols-outlined">
+            admin_panel_settings
+          </span>
+          </a>
+          </div>'
+        ;
+      }
+      ?>
       </div>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-      <div class='notification-dropdown'>
-        <a href="http://localhost:9000/wp-admin/">
-        <span class="material-symbols-outlined">
-          admin_panel_settings
-        </span>
-        </a>
-      </div>
+      
 
         
    

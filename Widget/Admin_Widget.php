@@ -57,12 +57,7 @@ function avis_client_page() {
                     $name_user=$_POST['user-name'];
                     global $wpdb; 
                         $results = $wpdb->get_results( "DELETE FROM wp_notifandfeedback WHERE id_feedback = $id");
-                        $_SESSION['notification'][$name_user] = array(
-                            'type' => 'AvisValid',
-                            'message' => "Votre avis à été Supprimée !",
-                            'notifications'=> "1"
-                        );
-                          header('Refresh:0');
+                        
             }
 			echo '</div>';
 			

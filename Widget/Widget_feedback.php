@@ -39,7 +39,7 @@ public function widget( $args, $instance ) {
 			echo '<p class="note">' . $etoiles . '</p>';
 			echo '<p class="commentaire">' . $result->commentaire . '</p>';
             if ( is_user_logged_in() ) {
-            if($name == $result->nom_utilisateur){
+            if($user_id == $result->id_user && $name == $result->nom_utilisateur){
                 $id=$result->id_feedback;
                 
                 echo '<form method="post">';
@@ -62,10 +62,7 @@ public function widget( $args, $instance ) {
                           header('Refresh:0');
                       } 
                     }
-            }
-            
-              
-
+                }
             }
 			echo '</div>';
 			
